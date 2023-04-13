@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        
+        function generateQRCode() {
+            var data = $("#inputText").val(); 
+            var apiUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(data) + "&size=200x200";
+           
+            $("#qrCode").attr("src", apiUrl);
+        }
+    </script>
+</head>
+<body>
+    <center><h1>QR Code Generator</h1></center>
+    <input type="text" id="inputText" placeholder="Enter data for QR code">
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <br>
+    <img id="qrCode" src="" alt="QR Code Image">
