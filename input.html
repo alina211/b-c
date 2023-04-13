@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="nameForm">
+        <label for="numOfNames">Enter the number of names:</label>
+        <input type="number" id="numOfNames" name="numOfNames">
+        <input type="submit" value="Submit">
+    </form>
+    <div id="output">
+        <h2>Names:</h2>
+        <ul id="namesList"></ul>
+    </div>
+</body>
+</html>
+<script>
+     document.getElementById("nameForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            var numOfNames = document.getElementById("numOfNames").value;
+            var names = [];
+            for (var i = 1; i <= numOfNames; i++) {
+                var name = prompt("Enter name " + i + ":");
+                names.push(name);
+            }
+            var namesList = document.getElementById("namesList");
+            namesList.innerHTML = ""; // Clear previous list items
+            for (var i = 0; i < names.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = names[i];
+                namesList.appendChild(li);
+            }
+        });
+</script>
